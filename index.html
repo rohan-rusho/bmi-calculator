@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Calculator — Body Mass Index Calculator | Free &amp; Instant</title>
+  <meta name="description" content="Free BMI calculator with metric and imperial units. Enter your height and weight, get your Body Mass Index instantly, see your category on the scale, and find your healthy weight range." />
+  <meta name="keywords" content="bmi calculator, body mass index, healthy weight, bmi chart, free bmi calculator" />
+  <meta name="author" content="BMI Calculator" />
+  <meta name="theme-color" content="#14100c" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BMI Calculator — Body Mass Index Calculator" />
+  <meta property="og:description" content="Enter your height and weight, get your BMI instantly, and see where you land on the scale." />
+  <meta property="og:site_name" content="BMI Calculator" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="BMI Calculator — Body Mass Index Calculator" />
+  <meta name="twitter:description" content="Enter your height and weight, get your BMI instantly, and see where you land on the scale." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ Header ============ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="BMI Calculator — home">
+        <span class="logo-mark" aria-hidden="true">⚖️</span>
+        BMI <em>Calculator</em>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#calculator">Calculator</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="nav-cta" href="#calculator">Calculate my BMI</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">☰</button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="#calculator">Calculator</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Know your number</span>
+          <h1>What’s your<br /><span class="grad">BMI?</span></h1>
+          <p class="hero-sub">Your Body Mass Index in <strong>one second</strong>. Metric or imperial, height and weight in, instant result out — with your category on the scale and your healthy range.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#calculator">⚖️ Calculate my BMI</a>
+            <a class="btn btn-ghost" href="#how">How it works</a>
+          </div>
+          <p class="hero-note">Free forever · No sign-up · Nothing is stored</p>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <p class="hero-card-label">Example result</p>
+          <p class="hero-card-big">22.9</p>
+          <p class="hero-card-cat">Healthy weight</p>
+          <div class="mini-scale">
+            <div class="mini-seg seg-blue"></div>
+            <div class="mini-seg seg-green"></div>
+            <div class="mini-seg seg-amber"></div>
+            <div class="mini-seg seg-red"></div>
+            <span class="mini-marker" style="left: 38%;"></span>
+          </div>
+          <p class="hero-card-note">70 kg · 175 cm · Healthy range 56.7 – 76.3 kg</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Calculator ============ -->
+    <section class="section" id="calculator">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">The calculator</span>
+          <h2>Your BMI, instantly.</h2>
+          <p>Enter your height and weight. The result updates live as you type — no button needed.</p>
+        </div>
+
+        <div class="tool-card reveal">
+          <span class="field-label" id="units-label">Units</span>
+          <div class="unit-toggle" role="group" aria-labelledby="units-label">
+            <button class="unit-btn active" type="button" data-units="metric" aria-pressed="true">Metric (kg, cm)</button>
+            <button class="unit-btn" type="button" data-units="imperial" aria-pressed="false">Imperial (lb, ft/in)</button>
+          </div>
+
+          <div class="input-grid">
+            <div>
+              <label class="field-label" for="height-input" id="height-label">Height (cm)</label>
+              <input class="text-input" id="height-input" type="number" min="50" max="300" step="0.1" inputmode="decimal" placeholder="175" />
+              <p class="field-hint">50 – 300 cm</p>
+            </div>
+            <div id="height-inches-wrap" class="hidden">
+              <label class="field-label" for="height-inches-input">Inches</label>
+              <input class="text-input" id="height-inches-input" type="number" min="0" max="11" step="1" inputmode="numeric" placeholder="0" />
+              <p class="field-hint">0 – 11 in</p>
+            </div>
+            <div>
+              <label class="field-label" for="weight-input" id="weight-label">Weight (kg)</label>
+              <input class="text-input" id="weight-input" type="number" min="10" max="500" step="0.1" inputmode="decimal" placeholder="70" />
+              <p class="field-hint" id="weight-hint">10 – 500 kg</p>
+            </div>
+          </div>
+
+          <div class="result" id="result" aria-live="polite">
+            <div class="result-empty" id="result-empty">
+              <span class="result-empty-icon" aria-hidden="true">⚖️</span>
+              <p>Enter your height and weight to see your BMI.</p>
+            </div>
+            <div class="result-body hidden" id="result-body">
+              <p class="result-label">Your BMI</p>
+              <p class="result-value" id="bmi-value">—</p>
+              <p class="result-category" id="bmi-category">—</p>
+              <p class="result-note" id="bmi-note"></p>
+
+              <div class="scale" aria-hidden="true">
+                <div class="scale-seg seg-under" title="Underweight"></div>
+                <div class="scale-seg seg-healthy" title="Healthy"></div>
+                <div class="scale-seg seg-over" title="Overweight"></div>
+                <div class="scale-seg seg-obese" title="Obese"></div>
+                <span class="scale-marker" id="scale-marker"></span>
+              </div>
+              <div class="scale-labels" aria-hidden="true">
+                <span>&lt; 18.5<br />Underweight</span>
+                <span>18.5 – 24.9<br />Healthy</span>
+                <span>25 – 29.9<br />Overweight</span>
+                <span>30+<br />Obese</span>
+              </div>
+              <p class="healthy-range" id="healthy-range"></p>
+            </div>
+          </div>
+
+          <div class="tool-actions">
+            <button class="btn btn-ghost btn-sm" id="clear-btn" type="button">✕ Clear</button>
+            <button class="btn btn-ghost btn-sm" id="copy-btn" type="button">📋 Copy result</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ How it works ============ -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Dead simple</span>
+          <h2>How it works.</h2>
+          <p>Three steps to your number.</p>
+        </div>
+        <div class="steps-grid reveal">
+          <div class="step-card">
+            <span class="step-num">1</span>
+            <h3>Pick your units</h3>
+            <p>Metric (kilograms and centimetres) or imperial (pounds and feet/inches) — switch any time.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">2</span>
+            <h3>Enter height &amp; weight</h3>
+            <p>Type your numbers in. The BMI updates live as you type — no button to press.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">3</span>
+            <h3>Read the scale</h3>
+            <p>See your BMI, your category, where the marker lands, and the healthy weight range for your height.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Good to know</span>
+          <h2>FAQ.</h2>
+        </div>
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <h3>How is BMI calculated?</h3>
+            <p>BMI = weight (kg) ÷ height (m)². For example, 70 kg ÷ (1.75 m × 1.75 m) = 22.9.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What do the categories mean?</h3>
+            <p>Under 18.5 is underweight, 18.5–24.9 is healthy, 25–29.9 is overweight, and 30 or above is obese — the standard adult WHO ranges.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Is BMI a perfect health measure?</h3>
+            <p>No. BMI doesn’t separate muscle from fat, so very muscular people can score high while being healthy. Treat it as a screening guide, not a diagnosis.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Is my data saved anywhere?</h3>
+            <p>No. Everything is calculated in your browser and never leaves your device.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <a class="logo" href="#top" aria-label="BMI Calculator — back to top">
+            <span class="logo-mark" aria-hidden="true">⚖️</span>
+            BMI <em>Calculator</em>
+          </a>
+          <p>Know your number. A tiny, free BMI calculator — metric and imperial, instant results, nothing stored.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#calculator">Calculator</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> BMI Calculator. A guide, not a diagnosis. ⚖️</span>
+        <span>Free forever. No sign-up.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
